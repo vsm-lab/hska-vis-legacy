@@ -14,6 +14,8 @@
 		<struts2.version>2.5-BETA3</struts2.version>
         <log4j2.version>2.5</log4j2.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
 
 	<dependencies>
