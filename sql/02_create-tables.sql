@@ -1,25 +1,3 @@
--- Create databases ----------------------------------------------------------------------------------------------------
-
-CREATE DATABASE IF NOT EXISTS usermanagement;
-CREATE DATABASE IF NOT EXISTS categories;
-CREATE DATABASE IF NOT EXISTS products;
-
--- create root user and grant rights
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
-
--- Create users --------------------------------------------------------------------------------------------------------
-
--- create separate users for each microservice
-CREATE USER 'usermanagementuser'@'%' IDENTIFIED BY 'password';
-CREATE USER 'categoriesuser'@'%' IDENTIFIED BY 'password';
-CREATE USER 'productsuser'@'%' IDENTIFIED BY 'password';
--- todo: extract passwords somehow
-
--- grant necessary privileges to users
-GRANT ALL PRIVILEGES ON usermanagement.* TO 'usermanagementuser'@'%';
-GRANT ALL PRIVILEGES ON categories.* TO 'categoriesuser'@'%';
-GRANT ALL PRIVILEGES ON products.* TO 'productsuser'@'%';
-
 -- db: usermanagement --------------------------------------------------------------------------------------------------
 
 USE usermanagement;

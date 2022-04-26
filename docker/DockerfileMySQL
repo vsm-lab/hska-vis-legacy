@@ -1,4 +1,5 @@
 FROM mysql:5.7.9
 
-COPY ./sql/create-databases.sql /docker-entrypoint-initdb.d/create-databases.sql
-COPY ./sql/initial.sql /docker-entrypoint-initdb.d/initial.sql
+COPY ./sql/01_create-databases.sh /docker-entrypoint-initdb.d/01_create-databases.sh
+COPY ./sql/02_create-tables.sql /docker-entrypoint-initdb.d/02_create-tables.sql
+COPY ./sql/03_initial.sql /docker-entrypoint-initdb.d/03_initial.sql

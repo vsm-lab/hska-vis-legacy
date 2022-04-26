@@ -20,6 +20,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: c8de110f37300a53a971749
       MYSQL_DATABASE: default
+      MYSQL_PRODUCTS_PASSWORD: password
+      MYSQL_CATEGORIES_PASSWORD: password
+      MYSQL_USERMANAGEMENT_PASSWORD: password
     ports:
       - "3306:3306"
     networks:
