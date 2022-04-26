@@ -6,6 +6,8 @@ services:
       dockerfile: ./docker/Dockerfile
     ports:
       - "8888:8080"
+    environment:
+      USERMANAGEMENT_DB_PASSWORD: password
     networks:
       local_dev_net:
           aliases:
