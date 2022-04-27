@@ -8,10 +8,6 @@ services:
       - "8888:8080"
     environment:
       USERMANAGEMENT_DB_PASSWORD: password
-    networks:
-      local_dev_net:
-          aliases:
-              - legacywebshop
 
   web-shop-db-image:
     build:
@@ -27,11 +23,23 @@ services:
       MYSQL_USERMANAGEMENT_PASSWORD: password
     ports:
       - "3306:3306"
-    networks:
-        local_dev_net:
-            aliases:
-                - web-shop-db-image
 
-networks:
-  local_dev_net:
-    driver: bridge
+  product-service:
+    build:
+      context: ../products-service
+      dockerfile: ../products-service/Dockerfile
+    environment:
+      category-service.base-url: "http://categories-service:8080"
+      spring.datasource.url: "jdbc:mysql://web-shop-db-image:3306/products"
+    ports:
+      - "8081:8080"
+
+  categories-service:
+    build:
+      context: ../categories-service
+      dockerfile: ../categories-service/Dockerfile
+    environment:
+      products-service.base-url: "http://products-service:8080"
+      spring.datasource.url: "jdbc:mysql://web-shop-db-image:3306/categories"
+    ports:
+      - "8082:8080"
