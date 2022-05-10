@@ -13,10 +13,9 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
 -- Create users --------------------------------------------------------------------------------------------------------
 
 -- create separate users for each microservice
-CREATE USER 'usermanagementuser'@'%' IDENTIFIED BY '$MYSQL_PRODUCTS_PASSWORD';
+CREATE USER 'usermanagementuser'@'%' IDENTIFIED BY '$MYSQL_USERMANAGEMENT_PASSWORD';
 CREATE USER 'categoriesuser'@'%' IDENTIFIED BY '$MYSQL_CATEGORIES_PASSWORD';
-CREATE USER 'productsuser'@'%' IDENTIFIED BY '$MYSQL_USERMANAGEMENT_PASSWORD';
--- todo: extract passwords somehow
+CREATE USER 'productsuser'@'%' IDENTIFIED BY '$MYSQL_PRODUCTS_PASSWORD';
 
 -- grant necessary privileges to users
 GRANT ALL PRIVILEGES ON usermanagement.* TO 'usermanagementuser'@'%';
