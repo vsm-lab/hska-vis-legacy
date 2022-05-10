@@ -7,7 +7,7 @@ services:
     ports:
       - "8888:8080"
     environment:
-      USERMANAGEMENT_DB_PASSWORD: password
+      USERMANAGEMENT_DB_PASSWORD: "psg1vZQd2ILVUO7m;z^b"
 
   web-shop-db-image:
     build:
@@ -18,9 +18,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: c8de110f37300a53a971749
       MYSQL_DATABASE: default
-      MYSQL_PRODUCTS_PASSWORD: password
-      MYSQL_CATEGORIES_PASSWORD: password
-      MYSQL_USERMANAGEMENT_PASSWORD: password
+      MYSQL_PRODUCTS_PASSWORD: "QoA;RgsedfNf9ma4.aFP"
+      MYSQL_CATEGORIES_PASSWORD: "v=Hqq4oLH+/7Vn=tNL2G"
+      MYSQL_USERMANAGEMENT_PASSWORD: "psg1vZQd2ILVUO7m;z^b"
     ports:
       - "3306:3306"
 
@@ -31,6 +31,7 @@ services:
     environment:
       category-service.base-url: "http://categories-service:8080"
       spring.datasource.url: "jdbc:mysql://web-shop-db-image:3306/products"
+      spring.datasource.password: "QoA;RgsedfNf9ma4.aFP"
     ports:
       - "8081:8080"
 
@@ -41,5 +42,6 @@ services:
     environment:
       products-service.base-url: "http://products-service:8080"
       spring.datasource.url: "jdbc:mysql://web-shop-db-image:3306/categories"
+      spring.datasource.password: "v=Hqq4oLH+/7Vn=tNL2G"
     ports:
       - "8082:8080"
