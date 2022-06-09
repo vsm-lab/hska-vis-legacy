@@ -1,6 +1,7 @@
 package hska.iwi.eShopMaster.controller;
 
-import hska.iwi.eShopMaster.model.database.dataAccessObjects.ProductDAO;
+import hska.iwi.eShopMaster.model.businessLogic.manager.ProductManager;
+import hska.iwi.eShopMaster.model.businessLogic.manager.impl.ProductManagerImpl;
 import hska.iwi.eShopMaster.model.database.dataobjects.User;
 
 import java.util.Map;
@@ -26,10 +27,12 @@ public class DeleteProductAction extends ActionSupport {
 		
 		if(user != null && (user.getRole().getTyp().equals("admin"))) {
 
-			new ProductDAO().deleteById(id);
-			{
-				res = "success";
-			}
+			// Helper inserts new Category in DB:
+			ProductManager productManager = new ProductManagerImpl();
+
+			productManager.deleteProductById(id);
+
+			res = "success";
 		}
 		
 		return res;

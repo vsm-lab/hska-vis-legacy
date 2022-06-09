@@ -1,93 +1,83 @@
 package hska.iwi.eShopMaster.model.database.dataobjects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
+public class Product {
+    private int id;
 
-/**
- * This class contains details about products.
- */
-@Entity
-@Table(name = "product")
-public class Product implements java.io.Serializable {
+    private String name;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    private double price;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id", nullable = false)
-	private int id;
+    @JsonIgnore
+    private Category category;
 
-	@Column(name = "name")
-	private String name;
+    private String details;
 
-	@Column(name = "price")
-	private double price;
+    public Product() {
+    }
 
-	
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
+    public Product(String name, double price, Category category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
 
-	@Column(name = "details")
-	private String details;
+    public Product(String name, double price, Integer categoryId, String details) {
+        this.name = name;
+        this.price = price;
+        this.category = new Category();
+        this.category.setId(categoryId);
+        this.details = details;
+    }
 
-	public Product() {
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Product(String name, double price, Category category) {
-		this.name = name;
-		this.price = price;
-		this.category = category;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public Product(String name, double price, Category category, String details) {
-		this.name = name;
-		this.price = price;
-		this.category = category;
-		this.details = details;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public double getPrice() {
+        return price;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Integer getCategoryId() {
+        return this.category.getId();
+    }
 
-	public double getPrice() {
-		return this.price;
-	}
+    public void setCategoryId(Integer categoryId) {
+        this.category = new Category(categoryId);
+    }
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
+    @JsonIgnore
+    public Category getCategory() {
+        return category;
+    }
 
-	public Category getCategory() {
-		return this.category;
-	}
+    @JsonIgnore
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
+    public String getDetails() {
+        return details;
+    }
 
-	public String getDetails() {
-		return this.details;
-	}
-
-	public void setDetails(String details) {
-		this.details = details;
-	}
-
+    public void setDetails(String details) {
+        this.details = details;
+    }
 }

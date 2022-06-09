@@ -8,6 +8,8 @@ services:
       - "8888:8080"
     environment:
       USERMANAGEMENT_DB_PASSWORD: "psg1vZQd2ILVUO7m;z^b"
+      categories-service.base-url: "http://categories-service:8080"
+      products-service.base-url: "http://products-service:8080"
 
   web-shop-db-image:
     build:
@@ -24,12 +26,12 @@ services:
     ports:
       - "3306:3306"
 
-  product-service:
+  products-service:
     build:
       context: ../products-service
       dockerfile: ../products-service/Dockerfile
     environment:
-      category-service.base-url: "http://categories-service:8080"
+      categories-service.base-url: "http://categories-service:8080"
       spring.datasource.url: "jdbc:mysql://web-shop-db-image:3306/products"
       spring.datasource.password: "QoA;RgsedfNf9ma4.aFP"
     ports:
