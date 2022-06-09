@@ -7,6 +7,7 @@ services:
     ports:
       - "8888:8080"
     environment:
+      USERMANAGEMENT_DB_URL: "jdbc:mysql://web-shop-db-image:3306/usermanagement"
       USERMANAGEMENT_DB_PASSWORD: "psg1vZQd2ILVUO7m;z^b"
       categories-service.base-url: "http://categories-service:8080"
       products-service.base-url: "http://products-service:8080"

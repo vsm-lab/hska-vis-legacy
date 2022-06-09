@@ -28,6 +28,7 @@ public class HibernateUtil {
         if (sessionFactory == null) {
             StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                     .configure() // configures settings from hibernate.cfg.xml
+                    .applySetting("hibernate.connection.url", System.getenv("USERMANAGEMENT_DB_URL"))
                     .applySetting("hibernate.connection.password", System.getenv("USERMANAGEMENT_DB_PASSWORD"))
                     .build();
             try {
